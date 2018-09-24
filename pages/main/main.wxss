@@ -1,0 +1,20 @@
+/* pages/main/main.wxss */
+.maininfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.container_header{
+  background: #898;
+  width: box-sizing;
+  height: 128rpx;
+  margin: 20rpx;
+}
+
+.maininfo_title{
+  align-content: center;
+  align-items: center;
+  text-align: center;
+  color: #f97878;
+  font-size: 12pt
+}

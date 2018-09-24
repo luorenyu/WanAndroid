@@ -1,0 +1,7 @@
+<!--pages/main/main.wxml-->
+<view class='container'>
+  <view class='container_header'>
+    <text class='maininfo_title'>{{title}}</text>
+  </view>
+  <text class='maininfo_title'>pages/main/main.wxml</text>
+</view>
