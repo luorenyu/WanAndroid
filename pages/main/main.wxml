@@ -1,7 +1,13 @@
 <!--pages/main/main.wxml-->
-<view class='container'>
-  <view class='container_header'>
-    <text class='maininfo_title'>{{title}}</text>
-  </view>
-  <text class='maininfo_title'>pages/main/main.wxml</text>
-</view>
+<scroll-view>
+  <block wx:for="{{feed}}" wx:key="feedId">
+    <view class="feed-item-container">
+      <view class="feed-item">
+        <!--title -->
+        <text class='title'>{{item.name}}</text>
+        <text class="content">{{item.des}}</text>
+      </view>
+      <image class='img' src='/images/right_arrow.png' mode='aspectFit'></image>
+    </view>
+  </block>
+</scroll-view>

@@ -76,6 +76,16 @@ Page({
 
   },
 
+  onItemClick:function(){
+    console.log("罗---home的item点击事件")
+    wx.switchTab({
+      url: '/pages/article/article',
+      success: function(res) {},
+      fail: function(res) {},
+      complete: function(res) {},
+    })
+  },
+
 
   /**
    * 网络请求

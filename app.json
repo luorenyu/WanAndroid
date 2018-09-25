@@ -2,24 +2,27 @@
   "pages": [
     "pages/index/index",
     "pages/main/main",
-    "pages/home/home"
+    "pages/home/home",
+    "pages/article/article"
   ],
   "window": {
-    "backgroundTextStyle": "light",
+    "backgroundTextStyle": "bold",
     "navigationBarBackgroundColor": "#2F92E8",
-    "navigationBarTitleText": "玩Android",
-    "navigationBarTextStyle": "black"
+    "navigationBarTitleText": "玩 Android",
+    "navigationBarTextStyle": "white"
   },
   "tabBar": {
     "color": "#646567",
     "selectedColor": "#2F92E8",
     "backgroundColor": "#FBFBFB",
     "list": [
-      {"pagePath":"pages/home/home",
-      "text":"首页",
-      "iconPath":"images/home.png",
-      "selectedIconPath": "images/home_selected.png"
-      },{
+      {
+        "pagePath": "pages/home/home",
+        "text": "首页",
+        "iconPath": "images/home.png",
+        "selectedIconPath": "images/home_selected.png"
+      },
+      {
         "pagePath": "pages/main/main",
         "text": "知识体系",
         "iconPath": "images/app.png",
@@ -27,9 +30,9 @@
       }
     ]
   },
-  "networkTimeout":{
-    "request":10000,
-    "downloadFile":10000
+  "networkTimeout": {
+    "request": 10000,
+    "downloadFile": 10000
   },
-  "debug":true
+  "debug": true
 }

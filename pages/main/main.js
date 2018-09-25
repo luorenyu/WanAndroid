@@ -8,14 +8,21 @@ Page({
    * 页面的初始数据
    */
   data: {
-    title:'第一个页面'
+    bannerInfo: [],
+    avatarUrl: "http://oxpfrja7o.bkt.clouddn.com/18-9-22/55891526.jpg",
+    indicatorDots: false,
+    autoplay: true,
+    interval: 2000,
+    duration: 500,
+    feed: [],
+    feed_length: 0
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.getKnowlageTree()
   },
 
   /**
@@ -50,7 +57,7 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    this.getKnowlageTree()
   },
 
   /**
@@ -65,5 +72,37 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+
+  getKnowlageTree: function () {
+    wx.showNavigationBarLoading()
+    var that = this;
+    wx.request({
+      url: 'http://www.wanandroid.com/tree/json',
+      method: 'GET',
+      header: {
+        'content-type': 'application/json'
+      },
+      success(res) {
+        var dataList=res.data.data
+        for(var i=0;i<dataList.length;i++){
+          var dataChildren=dataList[i]
+          dataChildren.des=""
+          var dataChildList=dataChildren.children
+          for (var j = 0; j < dataChildList.length;j++){
+            dataChildren.des += (dataChildList[j].name +'   ')
+          }
+        }
+        that.setData({
+          feed: dataList,
+          feed_length: dataList.length
+        });
+        wx.hideNavigationBarLoading()
+      }
+    })
+    setTimeout(function () {
+      wx.hideNavigationBarLoading();
+      wx.stopPullDownRefresh();
+    }, 10000);
   }
 })

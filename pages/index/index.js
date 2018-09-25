@@ -55,7 +55,7 @@ Page({
   bindload(e) {
     // setTimeout(App.WxService.getStorageSync('token') ? this.goIndex : this.goLogin, 3000)
     //模拟加载
-    setTimeout(this.goHome, 1500);
+    setTimeout(this.goHome, 500);
   },
   goHome() {
     wx.switchTab({
