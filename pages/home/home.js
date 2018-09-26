@@ -76,14 +76,14 @@ Page({
 
   },
 
-  onItemClick:function(){
-    console.log("罗---home的item点击事件")
-    wx.switchTab({
-      url: '/pages/article/article',
-      success: function(res) {},
-      fail: function(res) {},
-      complete: function(res) {},
-    })
+  onItemClick: function(event) {
+    console.log(event)
+    console.log(event.currentTarget.dataset.item)
+    var articleUrl=event.currentTarget.dataset.item.link;
+    var articleTitle = event.currentTarget.dataset.item.title;
+    wx.navigateTo({
+      url: '/pages/article/article?url='+articleUrl+"&title="+articleTitle,
+    });
   },
 
 

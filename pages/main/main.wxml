@@ -1,7 +1,7 @@
 <!--pages/main/main.wxml-->
 <scroll-view>
   <block wx:for="{{feed}}" wx:key="feedId">
-    <view class="feed-item-container">
+    <view class="feed-item-container" hover-class='feed-item-container-pressed'>
       <view class="feed-item">
         <!--title -->
         <text class='title'>{{item.name}}</text>
