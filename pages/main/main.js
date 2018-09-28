@@ -110,11 +110,21 @@ Page({
    */
   toChapter: function(event) {
     console.log("ToChapter")
-    console.log(event)
-    console.log(event.currentTarget.dataset.item)
-    var chapterId = event.currentTarget.dataset.item.chapterId;
+    var sourceChapterList = event.currentTarget.dataset.item.children
+    console.log(sourceChapterList)
+    var chapterList=[]
+    for(var i=0;i<sourceChapterList.length;i++){
+      var chapter=new Object();
+      chapter.name=sourceChapterList[i].name
+      chapter.chapterId=sourceChapterList[i].id
+      chapterList.push(chapter)
+      console.log(chapter)
+    }
+    console.log("chapterList===")
+    console.log(chapterList)
+    getApp().globalData.chapterList = chapterList
     wx.navigateTo({
-      url: '/pages/chapter/chapter?chapterId=' + chapterId,
+      url: '/pages/chapter/chapter',
     });
   }
 })

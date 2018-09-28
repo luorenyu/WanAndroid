@@ -4,7 +4,7 @@ Page({
     /** 
      * 导航数据 
      */
-    topNavs: ['直播', '推荐', '世界杯', '生活', '萌宠', '娱乐', '游戏', '常用', '11111', '22222', '3333', '4444', '5555', '6666'],
+    topNavs: ["l99","lll"],
     /** 
      * 当前激活的当航索引 
      */
@@ -16,8 +16,30 @@ Page({
     /** 
      * scroll-view 横向滚动条位置 
      */
-    scrollLeft: 0
+    scrollLeft: 0,
+    //存放着chapter{name:"",chapterId:0}对象的数组
+    list:[]
   },
+  /**
+  * 生命周期函数--监听页面加载
+  */
+  onLoad: function (options) {
+    var that=this
+    that.data.list=[]
+    console.log("接收到的参数是list=")
+    that.data.list=getApp().globalData.chapterList;
+    // this.data.list = JSON.parse(options.list); 
+    var tempArr=[]
+    for (var i = 0; i < that.data.list.length;i++){
+      tempArr[i]=that.data.list[i].name
+    }
+    that.setData({
+      list : getApp().globalData.chapterList,
+      topNavs:tempArr
+    })
+    //TODO 获取chapter下面的文章
+  },
+
   /** 
    * 顶部导航改变事件，即被点击了 
    * 1、如果2次点击同一个当航，则不做处理 

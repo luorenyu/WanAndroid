@@ -14,7 +14,9 @@ Page({
     feed: [],
     feed_length: 0,
     // 数据返回的额curPage是当前页数，这里是当前页数索引，所以是curPage-1
-    curPageIndex: 0
+    curPageIndex: 0,
+    chapter:null,
+    chapterList:[]
   },
 
   /**
@@ -79,10 +81,10 @@ Page({
   onItemClick: function(event) {
     console.log(event)
     console.log(event.currentTarget.dataset.item)
-    var articleUrl=event.currentTarget.dataset.item.link;
+    var articleUrl = event.currentTarget.dataset.item.link;
     var articleTitle = event.currentTarget.dataset.item.title;
     wx.navigateTo({
-      url: '/pages/article/article?url='+articleUrl+"&title="+articleTitle,
+      url: '/pages/article/article?url=' + articleUrl + "&title=" + articleTitle,
     });
   },
 
@@ -164,13 +166,19 @@ Page({
   /**
    * 去到文章对应的分类界面
    */
-  toChapter:function(event){
-    console.log("ToChapter")
+  toChapter: function(event) {
+    var chapters=[];
+    this.data.chapter = new Object();
     console.log(event)
-    console.log(event.currentTarget.dataset.item)
-    var chapterId = event.currentTarget.dataset.item.chapterId;
+    var item = event.currentTarget.dataset.item
+    console.log(item)
+    this.data.chapter.chapterId = item.chapterId
+    this.data.chapter.name = item.chapterName
+    chapters.push(this.data.chapter)
+    getApp().globalData.chapterList = chapters
+    console.log(chapters)
     wx.navigateTo({
-      url: '/pages/chapter/chapter?chapterId=' + chapterId,
+      url: '/pages/chapter/chapter' ,
     });
   }
 

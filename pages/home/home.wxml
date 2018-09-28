@@ -21,7 +21,7 @@
         <text class="nicedate">{{item.niceDate}}</text>
       </view>
       <!-- title -->
-      <view style="position:relative; margin:12px" data-item='{{item}}' bindtap="onItemClick">
+      <view style="position:relative; padding:12px" data-item='{{item}}' bindtap="onItemClick">
         <text class='item_title'>{{item.title}}</text>
       </view>
       <!-- 文章类型、收藏按钮 -->
