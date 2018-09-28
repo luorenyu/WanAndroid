@@ -21,60 +21,60 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function(options) {
     this.getKnowlageTree()
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
+  onReady: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onShow: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
+  onHide: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
+  onUnload: function() {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
     this.getKnowlageTree()
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
+  onReachBottom: function() {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  onShareAppMessage: function() {
 
   },
 
-  getKnowlageTree: function () {
+  getKnowlageTree: function() {
     wx.showNavigationBarLoading()
     var that = this;
     wx.request({
@@ -84,13 +84,13 @@ Page({
         'content-type': 'application/json'
       },
       success(res) {
-        var dataList=res.data.data
-        for(var i=0;i<dataList.length;i++){
-          var dataChildren=dataList[i]
-          dataChildren.des=""
-          var dataChildList=dataChildren.children
-          for (var j = 0; j < dataChildList.length;j++){
-            dataChildren.des += (dataChildList[j].name +'   ')
+        var dataList = res.data.data
+        for (var i = 0; i < dataList.length; i++) {
+          var dataChildren = dataList[i]
+          dataChildren.des = ""
+          var dataChildList = dataChildren.children
+          for (var j = 0; j < dataChildList.length; j++) {
+            dataChildren.des += (dataChildList[j].name + '   ')
           }
         }
         that.setData({
@@ -100,9 +100,21 @@ Page({
         wx.hideNavigationBarLoading()
       }
     })
-    setTimeout(function () {
+    setTimeout(function() {
       wx.hideNavigationBarLoading();
       wx.stopPullDownRefresh();
     }, 10000);
+  },
+  /**
+   * 去到文章对应的分类界面
+   */
+  toChapter: function(event) {
+    console.log("ToChapter")
+    console.log(event)
+    console.log(event.currentTarget.dataset.item)
+    var chapterId = event.currentTarget.dataset.item.chapterId;
+    wx.navigateTo({
+      url: '/pages/chapter/chapter?chapterId=' + chapterId,
+    });
   }
 })

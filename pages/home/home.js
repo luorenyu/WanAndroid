@@ -160,5 +160,18 @@ Page({
         console.log(res.data.data);
       }
     })
+  },
+  /**
+   * 去到文章对应的分类界面
+   */
+  toChapter:function(event){
+    console.log("ToChapter")
+    console.log(event)
+    console.log(event.currentTarget.dataset.item)
+    var chapterId = event.currentTarget.dataset.item.chapterId;
+    wx.navigateTo({
+      url: '/pages/chapter/chapter?chapterId=' + chapterId,
+    });
   }
+
 })

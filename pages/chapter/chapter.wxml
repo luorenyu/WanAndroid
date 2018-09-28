@@ -1,0 +1,17 @@
+<!--pages/chapter/chapter.wxml-->
+<view>  
+  <scroll-view scroll-x="{{true}}" class='top-nav-container' scroll-left="{{scrollLeft}}">  
+    <block wx:for="{{topNavs}}" wx:key="topNavKey" >  
+      <view class='tab-item {{currentActiveNavIndex == index ? "active":""}}' data-current-index='{{index}}' bindtap='topNavChange'>  
+        {{item}}  
+      </view>  
+    </block>  
+  </scroll-view>  
+  <swiper bindchange="swiperChange" class='swiper-container' current='{{currentActiveNavIndex}}' bindtouchmove="touchmove">  
+    <block wx:for="{{topNavs}}" wx:key="topNavItemKey">  
+      <swiper-item style="overflow:scroll">  
+        <view>{{item}}</view>  
+      </swiper-item>  
+    </block>  
+  </swiper>  
+</view>  

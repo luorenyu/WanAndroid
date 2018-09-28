@@ -13,20 +13,21 @@
     </block>
   </swiper>
   <block wx:for="{{feed}}" wx:key="feedId">
-    <view class="feed-item" hover-class="feed-item-pressed" data-item='{{item}}' bindtap="onItemClick">
+    <view class="feed-item" hover-class="feed-item-pressed">
       <!--头像、名字和发布时间  -->
-      <view class="feed-source">
+      <view class="feed-source"  data-item='{{item}}' bindtap="onItemClick">
         <image class='userinfo-avatar' src="{{avatarUrl}}"></image>
         <text class='author'>{{item.author}}</text>
         <text class="nicedate">{{item.niceDate}}</text>
       </view>
       <!-- title -->
-      <view style="position:relative; margin:12px">
+      <view style="position:relative; margin:12px" data-item='{{item}}' bindtap="onItemClick">
         <text class='item_title'>{{item.title}}</text>
       </view>
       <!-- 文章类型、收藏按钮 -->
-      <view>
-      <text style="margin-left:12px;font-size:11pt;color:#2F92E8">{{item.chapterName}}</text>
+      <view class='wrap-chapter' data-item='{{item}}' bindtap='toChapter'>
+      <text class='item-chapter' >{{item.chapterName}}</text>
+      <image class='item-collection' src='{{avatarUrl}}' mode='aspectFit' ></image>
       </view>
 
     </view>

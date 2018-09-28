@@ -3,7 +3,8 @@
     "pages/index/index",
     "pages/main/main",
     "pages/home/home",
-    "pages/article/article"
+    "pages/article/article",
+    "pages/chapter/chapter"
   ],
   "window": {
     "backgroundTextStyle": "bold",
