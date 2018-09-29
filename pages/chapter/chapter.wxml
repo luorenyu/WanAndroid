@@ -1,17 +1,37 @@
 <!--pages/chapter/chapter.wxml-->
-<view>  
-  <scroll-view scroll-x="{{true}}" class='top-nav-container' scroll-left="{{scrollLeft}}">  
-    <block wx:for="{{topNavs}}" wx:key="topNavKey" >  
-      <view class='tab-item {{currentActiveNavIndex == index ? "active":""}}' data-current-index='{{index}}' bindtap='topNavChange'>  
-        {{item}}  
-      </view>  
-    </block>  
-  </scroll-view>  
-  <swiper bindchange="swiperChange" class='swiper-container' current='{{currentActiveNavIndex}}' bindtouchmove="touchmove">  
-    <block wx:for="{{topNavs}}" wx:key="topNavItemKey">  
-      <swiper-item style="overflow:scroll">  
-        <view>{{item}}</view>  
-      </swiper-item>  
-    </block>  
-  </swiper>  
-</view>  
+<view>
+  <scroll-view scroll-x="{{true}}" class='top-nav-container' scroll-left="{{scrollLeft}}">
+    <block wx:for="{{topNavs}}" wx:key="topNavKey">
+      <view class='tab-item {{currentActiveNavIndex == index ? "active":""}}' data-current-index='{{index}}' bindtap='topNavChange'>
+        {{item}}
+      </view>
+    </block>
+  </scroll-view>
+  <swiper bindchange="swiperChange" class='swiper-container' current='{{currentActiveNavIndex}}' bindtouchmove="touchmove">
+    <block wx:for="{{topNavs}}" wx:key="topNavItemKey">
+      <swiper-item style="overflow:scroll">
+        <scroll-view>
+          <block wx:for="{{uiData}}" wx:key="uiDataId">
+            <view class="feed-item" hover-class="feed-item-pressed">
+              <!--头像、名字和发布时间  -->
+              <view class="feed-source" data-item='{{item}}' bindtap="onItemClick">
+                <image class='userinfo-avatar' src="{{avatarUrl}}"></image>
+                <text class='author'>{{item.author}}</text>
+                <text class="nicedate">{{item.niceDate}}</text>
+              </view>
+              <!-- title -->
+              <view style="position:relative; padding:12px" data-item='{{item}}' bindtap="onItemClick">
+                <text class='item_title'>{{item.title}}</text>
+              </view>
+              <!-- 文章类型、收藏按钮 -->
+              <view class='wrap-chapter' data-item='{{item}}' bindtap='toChapter'>
+                <text class='item-chapter'></text>
+                <image class='item-collection' src='{{avatarUrl}}' mode='aspectFit'></image>
+              </view>
+            </view>
+          </block>
+        </scroll-view>
+      </swiper-item>
+    </block>
+  </swiper>
+</view>
